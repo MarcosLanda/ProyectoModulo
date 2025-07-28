@@ -2,6 +2,7 @@ package MarcosLandaverde_20240139.ProyectoModulo_MarcosLandaverde_20240139.Servi
 
 import MarcosLandaverde_20240139.ProyectoModulo_MarcosLandaverde_20240139.Entities.ProveedoresEntity;
 import MarcosLandaverde_20240139.ProyectoModulo_MarcosLandaverde_20240139.Models.ProveedoresDTO;
+import MarcosLandaverde_20240139.ProyectoModulo_MarcosLandaverde_20240139.Repositories.ProveedoresRepositories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,10 @@ import java.util.stream.Collectors;
 public class ProveedoresServices {
 
     @Autowired
-    ProveedoresServices repoProveedores;
+     private ProveedoresRepositories ProveedoresRepository;
 
     public List<ProveedoresDTO> getAllProveedores() {
-        List<ProveedoresEntity> proveedores = repoProveedores.findAll();
+        List<ProveedoresEntity> proveedores = ProveedoresRepository.findAll();
         return proveedores.stream()
                 .map(this::convertirAProveedoresDTO)
                 .collect(Collectors.toList());
@@ -36,5 +37,8 @@ public class ProveedoresServices {
     }
 
 
-
+    public List<ProveedoresDTO> getallProveedores() {
+        //Retornamos la lista de ProveedoresDTO
+        return List.of();
+    }
 }
